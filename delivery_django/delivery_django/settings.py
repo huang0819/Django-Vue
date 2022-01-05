@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'djoser'
+    'djoser',
+    'delivery'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080' # 前端的url
+    'http://localhost:8082'  # 前端的url
 ]
 
 MIDDLEWARE = [
@@ -84,11 +85,14 @@ WSGI_APPLICATION = 'delivery_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # 因為你用的是MySQL
+        'NAME': 'delivery',
+        'USER': 'root',  # 這裡用最高權限管理員
+        'PASSWORD': '',  # 你的密碼
+        'HOST': 'localhost',  # 空白預設為localhost
+        'PORT': '3306',  # 空白預設為DB port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -114,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
